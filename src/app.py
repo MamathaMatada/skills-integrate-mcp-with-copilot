@@ -83,6 +83,50 @@ def root():
     return RedirectResponse(url="/static/index.html")
 
 
+@app.get("/admin")
+def admin_dashboard():
+    return RedirectResponse(url="/static/admin.html")
+
+
+@app.get("/api/admin/summary")
+def get_admin_summary():
+    """Return summary metrics and activity health for the admin dashboard."""
+    total_activities = len(activities)
+    total_participants = sum(
+        len(details["participants"]) for details in activities.values()
+    )
+    total_capacity = sum(
+        details["max_participants"] for details in activities.values()
+    )
+    activity_summaries = []
+
+    for name, details in activities.items():
+        participants = len(details["participants"])
+        activity_summaries.append({
+            "name": name,
+            "schedule": details["schedule"],
+            "participants": participants,
+            "capacity": details["max_participants"],
+            "spots_left": details["max_participants"] - participants,
+            "status": "Open" if participants < details["max_participants"] else "Full"
+        })
+
+    most_popular = max(
+        activities.items(),
+        key=lambda item: len(item[1]["participants"]),
+        default=(None, {"participants": []})
+    )
+
+    return {
+        "total_activities": total_activities,
+        "total_participants": total_participants,
+        "total_capacity": total_capacity,
+        "open_spots": total_capacity - total_participants,
+        "most_popular_activity": most_popular[0],
+        "activities": activity_summaries,
+    }
+
+
 @app.get("/activities")
 def get_activities():
     return activities
