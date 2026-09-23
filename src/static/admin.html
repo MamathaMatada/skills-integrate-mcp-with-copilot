@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mergington High School Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">MH</div>
+          <div>
+            <p class="eyebrow">School operations</p>
+            <h1>Admin Hub</h1>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <a class="active" href="#overview">Overview</a>
+          <a href="#activities">Activities</a>
+          <a href="#members">Members</a>
+          <a href="#announcements">Announcements</a>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="eyebrow">Quick actions</p>
+          <button type="button" class="secondary-btn" id="refresh-data">Refresh data</button>
+          <a class="secondary-link" href="/">Open student view</a>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h2>Activity overview</h2>
+          </div>
+          <div class="topbar-actions">
+            <span class="status-pill">Live data</span>
+          </div>
+        </header>
+
+        <section id="overview" class="cards-grid" aria-label="Overview metrics">
+          <article class="stat-card accent-blue">
+            <p>Total activities</p>
+            <h3 id="total-activities">0</h3>
+          </article>
+          <article class="stat-card accent-green">
+            <p>Participants</p>
+            <h3 id="total-participants">0</h3>
+          </article>
+          <article class="stat-card accent-purple">
+            <p>Open spots</p>
+            <h3 id="open-spots">0</h3>
+          </article>
+          <article class="stat-card accent-orange">
+            <p>Popular club</p>
+            <h3 id="popular-activity">—</h3>
+          </article>
+        </section>
+
+        <section id="activities" class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Operations</p>
+              <h3>Activity health</h3>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Activity</th>
+                  <th>Schedule</th>
+                  <th>Participants</th>
+                  <th>Capacity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="activity-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="members" class="panel two-column">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Members</p>
+              <h3>Student roster</h3>
+            </div>
+          </div>
+          <ul id="member-list" class="member-list"></ul>
+        </section>
+
+        <section id="announcements" class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Communication</p>
+              <h3>Recent announcements</h3>
+            </div>
+          </div>
+          <div class="announcement-list">
+            <div class="announcement-item">
+              <strong>Club fair reminder</strong>
+              <p>All clubs should share their signup links before Friday.</p>
+            </div>
+            <div class="announcement-item">
+              <strong>Tryouts update</strong>
+              <p>Basketball and soccer teams have added extra practice slots this week.</p>
+            </div>
+            <div class="announcement-item">
+              <strong>Volunteer drive</strong>
+              <p>Students can sign up to help with the upcoming community event.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
